@@ -19,7 +19,7 @@ jobs:
     env:
       GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
       ENV: ${{ vars.ENV }}
-      KEY: ${{ secrets.KEY }}
+      KEY: ${{ vars.KEY }}
 
     steps:
       - name: Show current environment info
