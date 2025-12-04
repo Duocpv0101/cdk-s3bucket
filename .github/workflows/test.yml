@@ -1,0 +1,27 @@
+name: Deploy Auto Environment
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - product
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      environment: ${{ github.ref_name }}
+
+    env:
+      GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+
+    steps:
+      - name: Show current environment info
+        run: |
+          echo "Deploying branch: ${{ github.ref_name }}"
+          echo "Using GitHub Environment: ${{ github.ref_name == 'develop' && 'dev' || 'staging' || 'prod' }}"
+          echo "GCP_PROJECT_ID = $GCP_PROJECT_ID"
