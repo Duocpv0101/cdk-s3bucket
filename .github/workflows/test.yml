@@ -18,6 +18,7 @@ jobs:
 
     env:
       GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+      ENV: ${{ vars.ENV }}
 
     steps:
       - name: Show current environment info
@@ -28,5 +29,6 @@ jobs:
 
       - name: Show 2
         run: |
-          echo "Show 2"
-          echo "GCP_PROJECT_ID: $GCP_PROJECT_ID"
+          echo "Show env"
+          cp $ENV .env
+          cat .env
