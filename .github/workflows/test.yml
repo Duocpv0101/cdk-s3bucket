@@ -36,3 +36,27 @@ jobs:
       - name: show secrets
         run: |
           echo "Secret: $KEY"
+
+      - name: Generate beautiful IMAGE_TAG
+        id: tag
+        run: |
+          # Lấy 7 ký tự đầu của commit SHA
+          COMMIT=$(git rev-parse --short=7 HEAD)
+          
+          # Tạo định dạng thời gian: HH.MM.DDMMYY
+          TIME=$(date +"%H.%M.%d%m%y")
+          
+          # Gán tag cuối cùng
+          IMAGE_TAG="${COMMIT}-${TIME}"
+          
+          # In ra để debug
+          echo "Commit SHA : $COMMIT"
+          echo "Time       : $TIME"
+          echo "IMAGE_TAG  : $IMAGE_TAG"
+          
+          # Đưa ra output để các step sau dùng: ${{ steps.tag.outputs.IMAGE_TAG }}
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Output
+        run: |
+          echo "Đã đẩy image với tag: ${{ steps.tag.outputs.IMAGE_TAG }}"
