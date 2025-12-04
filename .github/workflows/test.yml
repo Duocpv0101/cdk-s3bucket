@@ -22,6 +22,11 @@ jobs:
       KEY: ${{ vars.KEY }}
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
       - name: Show current environment info
         run: |
           echo "Deploying branch: ${{ github.ref_name }}"
