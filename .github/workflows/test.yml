@@ -29,4 +29,4 @@ jobs:
       - name: Show 2
         run: |
           echo "Show 2"
-          echo"GCP_PROJECT_ID: $GCP_PROJECT_ID
+          echo "GCP_PROJECT_ID: $GCP_PROJECT_ID"
