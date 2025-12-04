@@ -19,6 +19,7 @@ jobs:
     env:
       GCP_PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
       ENV: ${{ vars.ENV }}
+      KEY: ${{ secrets.KEY }}
 
     steps:
       - name: Show current environment info
@@ -32,3 +33,6 @@ jobs:
           echo "Show env"
           echo "$ENV" | tee .env
           cat .env
+      - name: show secrets
+        run: |
+          echo "Secret: $KEY"
