@@ -1,0 +1,14 @@
+name: PR Checklist Validation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  checklist-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR task list completed
+        uses: kentaro-m/task-completed-checker-action@v0.1.2
+        with:
+          repo-token: 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
