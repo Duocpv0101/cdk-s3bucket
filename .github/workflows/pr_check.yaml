@@ -1,18 +1,12 @@
-name: PR Checklist Validation
-
-on:
-  pull_request_target:
-    types: [opened, edited, synchronize]
-
-permissions:
-  pull-requests: read
-  contents: read
+name: 'PR Tasks Completed Check'
+on: 
+  pull_request:
+    types: [opened, edited]
 
 jobs:
-  checklist-check:
+  task-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR task list completed
-        uses: kentaro-m/task-completed-checker-action@v0.1.2
+      - uses: kentaro-m/task-completed-checker-action@v0.1.2
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
