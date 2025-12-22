@@ -1,0 +1,13 @@
+name: Require Checklist
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]  # Kiểm tra khi mở PR, chỉnh description, hoặc push mới
+
+jobs:
+  checklist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/require-checklist-action@v2
+        with:
+          requireChecklist: true  # Bắt buộc phải có checklist và tất cả phải completed
