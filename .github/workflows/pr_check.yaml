@@ -5,8 +5,9 @@ on:
     types: [opened, edited, synchronize]
 
 permissions:
-  pull-requests: read
-  contents: read
+  pull-requests: write
+  contents: write
+  repository-projects: write
 
 jobs:
   checklist-check:
