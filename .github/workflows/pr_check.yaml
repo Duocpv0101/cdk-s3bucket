@@ -1,12 +1,13 @@
-name: 'PR Tasks Completed Check'
-on: 
+name: Require Checklist
+
+on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]  # Kiểm tra khi mở PR, chỉnh description, hoặc push mới
 
 jobs:
-  task-check:
+  checklist:
     runs-on: ubuntu-latest
     steps:
-      - uses: kentaro-m/task-completed-checker-action@v0.1.2
+      - uses: mheap/require-checklist-action@v2
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          requireChecklist: true  # Bắt buộc phải có checklist và tất cả phải completed
